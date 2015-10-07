@@ -4,8 +4,9 @@ using System.Collections;
 public class ClawMove : MonoBehaviour {
     Rigidbody rigidboody;
    
-    float directionX =-1;
-    float directionZ = 0;
+    public int  speed;
+    float direction =-1;
+
 	bool started = false;
 
     // Use this for initialization
@@ -26,12 +27,9 @@ public class ClawMove : MonoBehaviour {
 	}
 
 	void MoveObject() {
-		rigidboody.velocity = new Vector3(directionX *  Time.deltaTime * 200, 0, directionZ * Time.deltaTime * 200);
+		rigidboody.velocity = new Vector3(direction * Input.GetAxis("Horizontal") *  Time.deltaTime * speed, 0, direction*Input.GetAxis("Vertical") * Time.deltaTime * speed);
 		started = true;
 	}
 
-    void OnTriggerEnter(Collider other)
-    {
-        directionX *= -1;
-    }
+
 }
