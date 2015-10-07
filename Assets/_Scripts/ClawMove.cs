@@ -27,7 +27,7 @@ public class ClawMove : MonoBehaviour {
 	}
 
 	void MoveObject() {
-		rigidboody.velocity = new Vector3(directionX *  Time.deltaTime*200, 0, directionZ * Time.deltaTime * 200);
+		rigidboody.velocity = new Vector3(directionX *  Time.deltaTime * 100, 0, directionZ * Time.deltaTime * 100);
 		started = true;
 	}
 

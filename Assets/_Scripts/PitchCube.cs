@@ -19,13 +19,17 @@ public class PitchCube : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 		// Check if left shift clicked
 		if (Input.GetKeyDown (KeyCode.Space) && created) {
 			created = false;
 			rigidBody.useGravity = true;
 			rigidBody.transform.parent = null;
 			Invoke("CreateCube", 3);
+		}
+
+		if (rigidBody != null && !rigidBody.useGravity) {
+			rigidBody.position = gameObject.transform.position;
 		}
 	}
 
