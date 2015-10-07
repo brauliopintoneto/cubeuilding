@@ -45,11 +45,14 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Idle.cs" />
      <Compile Include="Assets\_Scripts\ClawMove.cs" />
      <Compile Include="Assets\_Scripts\Cube.cs" />
      <Compile Include="Assets\_Scripts\LigthChange.cs" />
      <Compile Include="Assets\_Scripts\Moving.cs" />
      <Compile Include="Assets\_Scripts\PitchCube.cs" />
+     <Compile Include="Assets\_Scripts\ScoreController.cs" />
+     <Compile Include="Assets\_Scripts\StageCenterBehaviour.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Development/Unity Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
