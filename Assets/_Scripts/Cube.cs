@@ -13,17 +13,13 @@ public class Cube : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		MoveClaw ();
-
-		if (Input.GetKeyDown(KeyCode.Space)) {
-			ReleaseCube();
-		}
 	}
 
 	void ReleaseCube () {
-		cube.transform.parent = null;
-		
-		Rigidbody rigidbody = cube.AddComponent<Rigidbody>();
-		rigidbody.mass = 1;
+//		cube.transform.parent = null;
+//		
+//		Rigidbody rigidbody = cube.AddComponent<Rigidbody>();
+//		rigidbody.mass = 1;
 	}
 
 	void MoveClaw () {
