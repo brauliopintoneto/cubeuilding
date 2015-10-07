@@ -4,12 +4,16 @@ using System;
 
 public class PitchCube : MonoBehaviour {
 	
-	public GameObject prefab;
+	public GameObject[] cubePrefabs;
 	public GameObject gameObject;
 	private Rigidbody rigidBody;
 
 
 	private bool created;
+
+	void Awake () {
+		cubePrefabs = Resources.LoadAll<GameObject> ("_Prefabs") as GameObject[];
+	}
 
 	// Use this for initialization
 	void Start () {
@@ -35,8 +39,9 @@ public class PitchCube : MonoBehaviour {
 	}
 
 	void CreateCube(){
+		var randomPrefab = cubePrefabs[UnityEngine.Random.Range(0, cubePrefabs.Length)];
 		Vector3 position = gameObject.transform.position;
-		var obj = Instantiate (prefab, position, transform.rotation) as GameObject;
+		var obj = Instantiate (randomPrefab, position, transform.rotation) as GameObject;
 		rigidBody = obj.GetComponent<Rigidbody> ();
 		created = true;
 	}
