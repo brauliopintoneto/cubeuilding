@@ -3,38 +3,37 @@ using System.Collections;
 using System;
 
 public class PitchCube : MonoBehaviour {
-
+	
 	public GameObject prefab;
+	public GameObject gameObject;
 	private Rigidbody rigidBody;
-	private float time;
-	private int increment;
+
+
 	private bool created;
+
 	// Use this for initialization
 	void Start () {
-		time = Time.fixedDeltaTime;
 		created = false;
+		// Create initial cube
 		CreateCube ();
-		increment = 0;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown (KeyCode.LeftShift) && created) {
+		// Check if left shift clicked
+		if (Input.GetKeyDown (KeyCode.Space) && created) {
 			created = false;
-			// increment += 1;
 			rigidBody.useGravity = true;
+			rigidBody.transform.parent = null;
 			Invoke("CreateCube", 3);
 		}
 	}
 
 	void CreateCube(){
-		// transform.position.y += 100;
-		Vector3 position = transform.position;
-		// position.y += increment;
+		Vector3 position = gameObject.transform.position;
 		var obj = Instantiate (prefab, position, transform.rotation) as GameObject;
-		// Vector3 position = obj.transform.position;
 		rigidBody = obj.GetComponent<Rigidbody> ();
-
 		created = true;
+		obj.transform.parent = gameObject.transform.parent;
 	}
 }

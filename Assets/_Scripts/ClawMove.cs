@@ -6,9 +6,11 @@ public class ClawMove : MonoBehaviour {
    
     float directionX =-1;
     float directionZ = 0;
+	bool started = false;
+
     // Use this for initialization
     void Start () {
-       
+		Invoke("MoveObject", 3);
         if (rigidboody == null)
         {
             rigidboody = GetComponent<Rigidbody>();
@@ -18,19 +20,19 @@ public class ClawMove : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        rigidboody.velocity = new Vector3(directionX *  Time.deltaTime*200, 0, directionZ * Time.deltaTime * 200);
-       
-       
+		if (started) {
+			MoveObject ();
+		}
+        // rigidboody.velocity = new Vector3(directionX *  Time.deltaTime*200, 0, directionZ * Time.deltaTime * 200);
+	}
 
-    }
+	void MoveObject() {
+		rigidboody.velocity = new Vector3(directionX *  Time.deltaTime*200, 0, directionZ * Time.deltaTime * 200);
+		started = true;
+	}
 
     void OnTriggerEnter(Collider other)
     {
-
-    
-
-
         directionX *= -1;
-
     }
 }
