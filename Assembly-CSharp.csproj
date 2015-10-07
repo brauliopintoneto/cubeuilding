@@ -45,6 +45,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\_Scripts\ClawMove.cs" />
      <Compile Include="Assets\_Scripts\Cube.cs" />
      <Compile Include="Assets\_Scripts\LigthChange.cs" />
      <Compile Include="Assets\_Scripts\Moving.cs" />
