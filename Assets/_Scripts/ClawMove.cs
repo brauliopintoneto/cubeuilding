@@ -10,7 +10,7 @@ public class ClawMove : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-		Invoke("MoveObject", 3);
+		Invoke("MoveObject", 1);
         if (rigidboody == null)
         {
             rigidboody = GetComponent<Rigidbody>();
@@ -19,15 +19,14 @@ public class ClawMove : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 		if (started) {
 			MoveObject ();
 		}
-        // rigidboody.velocity = new Vector3(directionX *  Time.deltaTime*200, 0, directionZ * Time.deltaTime * 200);
 	}
 
 	void MoveObject() {
-		rigidboody.velocity = new Vector3(directionX *  Time.deltaTime * 100, 0, directionZ * Time.deltaTime * 100);
+		rigidboody.velocity = new Vector3(directionX *  Time.deltaTime * 200, 0, directionZ * Time.deltaTime * 200);
 		started = true;
 	}
 

@@ -25,10 +25,11 @@ public class PitchCube : MonoBehaviour {
 			created = false;
 			rigidBody.useGravity = true;
 			rigidBody.transform.parent = null;
-			Invoke("CreateCube", 3);
+			Invoke("CreateCube", 2);
 		}
 
-		if (rigidBody != null && !rigidBody.useGravity) {
+		if (rigidBody != null && !rigidBody.useGravity && 
+		    gameObject != null) {
 			rigidBody.position = gameObject.transform.position;
 		}
 	}
@@ -38,6 +39,5 @@ public class PitchCube : MonoBehaviour {
 		var obj = Instantiate (prefab, position, transform.rotation) as GameObject;
 		rigidBody = obj.GetComponent<Rigidbody> ();
 		created = true;
-		obj.transform.parent = gameObject.transform.parent;
 	}
 }
