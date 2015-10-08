@@ -29,6 +29,9 @@ public class PitchCube : MonoBehaviour {
 			created = false;
 			rigidBody.useGravity = true;
 			rigidBody.transform.parent = null;
+			rigidBody.rotation.x = 0;
+			rigidBody.rotation.y = 0;
+			rigidBody.rotation.z = 0;
 			Invoke("CreateCube", 2);
 		}
 
@@ -42,7 +45,11 @@ public class PitchCube : MonoBehaviour {
 
 		var randomPrefab = cubePrefabs[UnityEngine.Random.Range(0, cubePrefabs.Length)];
 		Vector3 position = gameObject.transform.position;
-		var obj = Instantiate (randomPrefab, position, transform.rotation) as GameObject;
+		Quaternion rotation = transform.rotation;
+		rotation.x = 0;
+		rotation.y = 0;
+		rotation.z = 0;
+		var obj = Instantiate (randomPrefab, position, rotation) as GameObject;
 		rigidBody = obj.GetComponent<Rigidbody> ();
 		created = true;
 	}
