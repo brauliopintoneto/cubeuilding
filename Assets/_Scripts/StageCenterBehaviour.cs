@@ -4,6 +4,8 @@ using System.Collections;
 public class StageCenterBehaviour : MonoBehaviour {
 
 	private ScoreController scoreController;
+	private GameObject lastObject;
+	private bool countValue = false;
 
 	void Awake() {
 		scoreController = GameObject.FindGameObjectWithTag ("ScoreController")
@@ -16,21 +18,33 @@ public class StageCenterBehaviour : MonoBehaviour {
 	}
 
 	void OnCollisionEnter (Collision col) {
-		Debug.Log("collision: "+col.collider.name);
-		if (col.gameObject.tag.Equals ("CubePrefab")) {
-			if (this.gameObject.layer.Equals (col.collider.gameObject.layer)) {
+		Debug.Log ( "countValue: " + gameObject.layer + 
+		            "gameObject: " + col.gameObject);
+
+		if (this.gameObject.layer.Equals (col.gameObject.layer)) 
+		{
+			if (!countValue && !gameObject.tag.Equals ("floor")) 
+			{
+				countValue = true;
 				scoreController.AddScore (10);
-			} else {
-				scoreController.AddScore (-10);
-				Destroy (col.gameObject);
-			}
+			} 
+		}
+		else 
+		{
+			DestroyCube (gameObject);
+			// DestroyCube (this.gameObject);
 		}
 	}
 
-	private void OnTriggerEnter(Collider other) {
 
+	void DestroyCube(GameObject _gameObject) 
+	{
+		if (!_gameObject.layer.Equals ("floor")) 
+		{
+			scoreController.AddScore (-10);
+			Destroy (_gameObject);
+		}
 	}
-
 	// Update is called once per frame
 	void Update () {
 
