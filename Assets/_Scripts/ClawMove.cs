@@ -24,7 +24,7 @@ public class ClawMove : MonoBehaviour {
 		if (started) {
 			MoveObject ();
 		}
-	}
+	} 
 
 	void MoveObject() {
 		rigidboody.velocity = new Vector3(direction * (Input.GetAxis("Horizontal") + 1) * 
