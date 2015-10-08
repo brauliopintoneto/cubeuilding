@@ -49,7 +49,6 @@ public class PitchCube : MonoBehaviour {
 		rotation.z = 0;
 		var obj = Instantiate (randomPrefab, position, rotation) as GameObject;
 		rigidBody = obj.GetComponent<Rigidbody> ();
-		rigidBody.isKinematic = true;
 		created = true;
 	}
 }
