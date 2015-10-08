@@ -29,9 +29,9 @@ public class PitchCube : MonoBehaviour {
 			created = false;
 			rigidBody.useGravity = true;
 			rigidBody.transform.parent = null;
-			rigidBody.rotation.x = 0;
-			rigidBody.rotation.y = 0;
-			rigidBody.rotation.z = 0;
+			rigidBody.transform.rotation.x = 0;
+			rigidBody.transform.rotation.y = 0;
+			rigidBody.transform.rotation.z = 0;
 			Invoke("CreateCube", 2);
 		}
 
