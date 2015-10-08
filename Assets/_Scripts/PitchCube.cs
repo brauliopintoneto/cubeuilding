@@ -42,6 +42,7 @@ public class PitchCube : MonoBehaviour {
 		var randomPrefab = cubePrefabs[UnityEngine.Random.Range(0, cubePrefabs.Length)];
 		Vector3 position = gameObject.transform.position;
 		var obj = Instantiate (randomPrefab, position, transform.rotation) as GameObject;
+		obj.tag = randomPrefab.tag;
 		rigidBody = obj.GetComponent<Rigidbody> ();
 		created = true;
 	}

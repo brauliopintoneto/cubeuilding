@@ -16,7 +16,19 @@ public class StageCenterBehaviour : MonoBehaviour {
 	}
 
 	void OnCollisionEnter (Collision col) {
-		scoreController.AddScore (10);
+		Debug.Log("collision: "+col.collider.name);
+		if (col.gameObject.tag.Equals ("CubePrefab")) {
+			if (this.gameObject.layer.Equals (col.collider.gameObject.layer)) {
+				scoreController.AddScore (10);
+			} else {
+				scoreController.AddScore (-10);
+				Destroy (col.gameObject);
+			}
+		}
+	}
+
+	private void OnTriggerEnter(Collider other) {
+
 	}
 
 	// Update is called once per frame

@@ -4,7 +4,7 @@ using System.Collections;
 public class ClawMove : MonoBehaviour {
     Rigidbody rigidboody;
    
-    public int  speed;
+    public int  speed = 20;
     float direction =-1;
 
 	bool started = false;
@@ -27,9 +27,17 @@ public class ClawMove : MonoBehaviour {
 	}
 
 	void MoveObject() {
-		rigidboody.velocity = new Vector3(direction * Input.GetAxis("Horizontal") *  Time.deltaTime * speed, 0, direction*Input.GetAxis("Vertical") * Time.deltaTime * speed);
+		rigidboody.velocity = new Vector3(direction * (Input.GetAxis("Horizontal") + 1) * 
+		                                  Time.deltaTime * speed, 
+		                                  0, 
+		                                  (direction * Input.GetAxis("Vertical")) * Time.deltaTime * speed);
 		started = true;
 	}
 
+	// private void OnControllerColliderHit(ControllerColliderHit hit)
+	private void OnTriggerEnter(Collider other)
+	{
+		direction *= -1;
+	}
 
 }
