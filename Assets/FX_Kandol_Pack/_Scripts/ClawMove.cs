@@ -37,7 +37,17 @@ public class ClawMove : MonoBehaviour {
 	// private void OnControllerColliderHit(ControllerColliderHit hit)
 	private void OnTriggerEnter(Collider other)
 	{
-		direction *= -1;
-	}
+        if (!other.tag.Equals("CubePrefab") && !other.tag.Equals("cubfixed"))
+        {
+            direction *= -1;
+        }
+
+      
+
+    }
+
+
+
+ 
 
 }
