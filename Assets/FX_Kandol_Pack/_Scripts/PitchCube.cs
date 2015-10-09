@@ -4,7 +4,7 @@ using System;
 
 public class PitchCube : MonoBehaviour {
 	
-	public GameObject[] cubePrefabs;
+	public GameObject cubePrefab;
 	public GameObject gameObject;
 	private Rigidbody rigidBody;
 
@@ -12,7 +12,7 @@ public class PitchCube : MonoBehaviour {
 	private bool created;
 
 	void Awake () {
-		cubePrefabs = Resources.LoadAll<GameObject> ("_Prefabs") as GameObject[];
+	
 	}
 
 	// Use this for initialization
@@ -41,13 +41,13 @@ public class PitchCube : MonoBehaviour {
 
 	void CreateCube(){
 
-		var randomPrefab = cubePrefabs[UnityEngine.Random.Range(0, cubePrefabs.Length)];
+		
 		Vector3 position = gameObject.transform.position;
 		Quaternion rotation = transform.rotation;
 		rotation.x = 0;
 		rotation.y = 0;
 		rotation.z = 0;
-		var obj = Instantiate (randomPrefab, position, rotation) as GameObject;
+		var obj = Instantiate (cubePrefab, position, rotation) as GameObject;
 		rigidBody = obj.GetComponent<Rigidbody> ();
       
            created = true;

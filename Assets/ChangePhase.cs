@@ -4,7 +4,7 @@ using System.Collections;
 public class ChangePhase : MonoBehaviour {
 
     public Transform cameraTransform;
-    public Transform clawTransform;
+    public GameObject claw;
     public Transform gameObjectTransform;
 
     Vector3 cameraPosition ;
@@ -49,9 +49,9 @@ public class ChangePhase : MonoBehaviour {
 
            
             cameraPosition.y += 4;
-            clawTransform.position = new Vector3(clawTransform.position.x, clawTransform.position.y + 4, clawTransform.position.z);
+            claw.transform.position = new Vector3(claw.transform.position.x, claw.transform.position.y + 4, claw.transform.position.z);
             gameObjectTransform.position = new Vector3(gameObjectTransform.position.x, gameObjectTransform.position.y + 4, gameObjectTransform.position.z);
-
+            claw.GetComponent<ClawMove>().speed += 50;
 
         }
     }
