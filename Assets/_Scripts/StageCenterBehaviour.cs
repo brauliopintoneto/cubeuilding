@@ -16,7 +16,7 @@ public class StageCenterBehaviour : MonoBehaviour {
 	}
 
 	void OnCollisionEnter (Collision col) {
-		scoreController.AddScore (10);
+		//scoreController.AddScore (10);
 	}
 
 	// Update is called once per frame

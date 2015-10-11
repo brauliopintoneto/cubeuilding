@@ -4,7 +4,7 @@ using System.Collections;
 public class ClawMove : MonoBehaviour {
     Rigidbody rigidboody;
    
-    public int  speed;
+    public int speed;
     float direction =-1;
 
 	bool started = false;

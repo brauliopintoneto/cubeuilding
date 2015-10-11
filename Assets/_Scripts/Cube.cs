@@ -3,29 +3,43 @@ using System.Collections;
 
 public class Cube : MonoBehaviour {
 
-	public GameObject cube;
+	private ScoreController scoreController;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		MoveClaw ();
+	void Awake ()
+	{
+		scoreController = GameObject.FindGameObjectWithTag ("ScoreController")
+			.GetComponent<ScoreController> ();
 	}
 
-	void ReleaseCube () {
-//		cube.transform.parent = null;
-//		
-//		Rigidbody rigidbody = cube.AddComponent<Rigidbody>();
-//		rigidbody.mass = 1;
+	void Start () 
+	{
+		scoreController.IncrementCubeCount ();
 	}
 
-	void MoveClaw () {
-		transform.Translate (new Vector3(
-			-Input.GetAxis("Horizontal") * Time.deltaTime * 1,
-			0,
-			-Input.GetAxis("Vertical") * Time.deltaTime * 1));
+	void OnDestroy () 
+	{
+		scoreController.DecrementCubeCount ();
 	}
+
+	void FixedUpdate ()
+	{
+
+	}
+
+	void OnCollisionEnter (Collision col) 
+	{
+		if (col.gameObject.name == "LaunchedCube" && 
+				col.gameObject.tag == gameObject.tag) {
+			Destroy (gameObject);
+			Destroy (col.gameObject);
+			scoreController.AddScore (10);
+			scoreController.IncrementMultiplier ();
+		} else if (col.gameObject.name == "LaunchedCube" && 
+		           col.gameObject.tag != gameObject.tag)
+		{
+			col.gameObject.name = "DroppedCube";
+			scoreController.ResetMultiplier ();
+		}
+	}
+
 }

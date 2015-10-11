@@ -13,25 +13,25 @@ public class Moving : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		Vector3 position = transform.position;
-		//transform.
-//		position.x += 1;
-//		position.z += 1;
-		//transform.position=position;
 
+#if UNITY_ANDROID
+		transform.Translate (new Vector3(
+			-Input.acceleration.x * 100 * Time.deltaTime * 1,
+			0,
+			-Input.acceleration.y * 100 * Time.deltaTime * 1));
+
+#else
 		transform.Translate (new Vector3(
 			-(Input.GetAxis("Horizontal")) * Time.deltaTime * 1,
 			0,
 			-Input.GetAxis("Vertical") * Time.deltaTime * 1));
+#endif
+
 	}
 
 	private void OnControllerColliderHit(ControllerColliderHit hit)
 	{
 		Rigidbody body = hit.collider.attachedRigidbody;
-		//dont move the rigidbody if the character is on top of it
-//		if (m_CollisionFlags == CollisionFlags.Below)
-//		{
-//			return;
-//		}
 		
 		if (body == null || body.isKinematic)
 		{
@@ -39,6 +39,5 @@ public class Moving : MonoBehaviour {
 		}
 		horizontal += 1;
 		vertical += 1;
-		// body.AddForceAtPosition(m_CharacterController.velocity*0.1f, hit.point, ForceMode.Impulse);
 	}
 }
