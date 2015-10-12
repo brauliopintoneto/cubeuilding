@@ -25,11 +25,21 @@ public class PitchCube : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		// Check if left shift clicked
-		if (Input.GetKeyDown (KeyCode.Space) && created) {
+		if ((Input.GetKeyDown (KeyCode.Space) || Input.touchCount>0) && created) {
 			created = false;
 			rigidBody.useGravity = true;
 			rigidBody.transform.parent = null;
-         
+            float direction = GetComponentInParent<ClawMove>().direction;
+            Vector3 position = Vector3.right;
+            if (direction > 0)
+            {
+                position = Vector3.right;
+            }
+            else
+            {
+                position = Vector3.left;
+            }
+            rigidBody.AddForce(position * (rigidBody.mass * 100));
             Invoke("CreateCube", 2);
 		}
 

@@ -26,10 +26,11 @@ public class StageCenterBehaviour : MonoBehaviour {
              
         if (!col.gameObject.tag.Equals("floordestruction"))
         {
-            if (!countValue)
+            if (!countValue)  
             {
                 countValue = true;
                 scoreController.AddScore(1);
+                GetComponent<AudioSource>().Play();
                 
             }
         }

@@ -5,7 +5,7 @@ public class ClawMove : MonoBehaviour {
     Rigidbody rigidboody;
    
     public int  speed = 20;
-    float direction =-1;
+    public float direction =-1;
 
 	bool started = false;
 

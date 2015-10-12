@@ -18,9 +18,11 @@ public class ChangePhase : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-       
+        if(cameraTransform.position!= cameraPosition)
+        {
+                
             cameraTransform.position = Vector3.Lerp(cameraTransform.position, cameraPosition, 0.02f);
-      
+        }
 
 
     }
